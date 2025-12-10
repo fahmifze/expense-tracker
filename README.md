@@ -13,7 +13,7 @@ A modern full-stack expense management application built with React, TypeScript,
 - **Search & Filter** - Filter expenses by date range, category, and search by description
 - **Export** - Download expenses as CSV or PDF reports
 - **Profile Management** - Update profile info, change password, delete account
-- **Responsive Design** - Works seamlessly on desktop and mobile devices
+- **Responsive Design** - Mobile-friendly web interface that adapts to all screen sizes
 
 ## Tech Stack
 

@@ -4,6 +4,10 @@ import categoryRoutes from './category.routes';
 import expenseRoutes from './expense.routes';
 import userRoutes from './user.routes';
 import exportRoutes from './export.routes';
+import budgetRoutes from './budget.routes';
+import incomeRoutes from './income.routes';
+import recurringRoutes from './recurring.routes';
+import insightsRoutes from './insights.routes';
 
 const router = Router();
 
@@ -22,5 +26,9 @@ router.use('/categories', categoryRoutes);
 router.use('/expenses', expenseRoutes);
 router.use('/users', userRoutes);
 router.use('/export', exportRoutes);
+router.use('/budgets', budgetRoutes);
+router.use('/incomes', incomeRoutes);
+router.use('/recurring', recurringRoutes);
+router.use('/insights', insightsRoutes);
 
 export default router;

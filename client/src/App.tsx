@@ -9,6 +9,9 @@ import Dashboard from './pages/Dashboard';
 import Categories from './pages/Categories';
 import Expenses from './pages/Expenses';
 import Profile from './pages/Profile';
+import Budget from './pages/Budget';
+import Income from './pages/Income';
+import Recurring from './pages/Recurring';
 
 // Redirect authenticated users away from login/register
 function PublicRoute({ children }: { children: React.ReactNode }) {
@@ -85,6 +88,30 @@ function AppRoutes() {
         element={
           <ProtectedWithLayout>
             <Profile />
+          </ProtectedWithLayout>
+        }
+      />
+      <Route
+        path="/budget"
+        element={
+          <ProtectedWithLayout>
+            <Budget />
+          </ProtectedWithLayout>
+        }
+      />
+      <Route
+        path="/income"
+        element={
+          <ProtectedWithLayout>
+            <Income />
+          </ProtectedWithLayout>
+        }
+      />
+      <Route
+        path="/recurring"
+        element={
+          <ProtectedWithLayout>
+            <Recurring />
           </ProtectedWithLayout>
         }
       />
