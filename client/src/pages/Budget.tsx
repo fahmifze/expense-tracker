@@ -77,8 +77,8 @@ export default function Budget() {
     <div>
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Budget Planner</h1>
-          <p className="text-gray-500 mt-1">Set spending limits and track your progress</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Budget Planner</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Set spending limits and track your progress</p>
         </div>
         <button onClick={() => setShowForm(true)} className="btn-primary">
           + Add Budget
@@ -92,7 +92,7 @@ export default function Budget() {
           {/* Overall Budget */}
           {overallBudget && (
             <div>
-              <h2 className="text-lg font-semibold text-gray-800 mb-3">Overall Budget</h2>
+              <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Overall Budget</h2>
               <BudgetCard
                 budget={overallBudget}
                 onEdit={handleEdit}
@@ -103,10 +103,10 @@ export default function Budget() {
 
           {/* Category Budgets */}
           <div>
-            <h2 className="text-lg font-semibold text-gray-800 mb-3">Category Budgets</h2>
+            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Category Budgets</h2>
             {categoryBudgets.length === 0 ? (
               <div className="card p-8 text-center">
-                <p className="text-gray-500 mb-4">No category budgets set up yet</p>
+                <p className="text-gray-500 dark:text-gray-400 mb-4">No category budgets set up yet</p>
                 <button onClick={() => setShowForm(true)} className="btn-secondary">
                   Create your first budget
                 </button>
@@ -128,29 +128,29 @@ export default function Budget() {
           {/* Summary Stats */}
           {budgets && budgets.length > 0 && (
             <div className="card p-6">
-              <h2 className="text-lg font-semibold text-gray-800 mb-4">Budget Summary</h2>
+              <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Budget Summary</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <p className="text-2xl font-bold text-gray-900">{budgets.length}</p>
-                  <p className="text-sm text-gray-500">Total Budgets</p>
+                <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{budgets.length}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Total Budgets</p>
                 </div>
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <p className="text-2xl font-bold text-green-600">
+                <div className="text-center p-4 bg-green-50 dark:bg-green-900/30 rounded-lg">
+                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                     {budgets.filter((b) => !b.isWarning && !b.isOverBudget).length}
                   </p>
-                  <p className="text-sm text-gray-500">On Track</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">On Track</p>
                 </div>
-                <div className="text-center p-4 bg-yellow-50 rounded-lg">
-                  <p className="text-2xl font-bold text-yellow-600">
+                <div className="text-center p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg">
+                  <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
                     {budgets.filter((b) => b.isWarning).length}
                   </p>
-                  <p className="text-sm text-gray-500">Near Limit</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Near Limit</p>
                 </div>
-                <div className="text-center p-4 bg-red-50 rounded-lg">
-                  <p className="text-2xl font-bold text-red-600">
+                <div className="text-center p-4 bg-red-50 dark:bg-red-900/30 rounded-lg">
+                  <p className="text-2xl font-bold text-red-600 dark:text-red-400">
                     {budgets.filter((b) => b.isOverBudget).length}
                   </p>
-                  <p className="text-sm text-gray-500">Exceeded</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Exceeded</p>
                 </div>
               </div>
             </div>

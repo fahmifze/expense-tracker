@@ -120,8 +120,8 @@ export default function Recurring() {
     <div>
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Recurring Transactions</h1>
-          <p className="text-gray-500 mt-1">Manage automatic income and expenses</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Recurring Transactions</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Manage automatic income and expenses</p>
         </div>
         <button onClick={() => setShowForm(true)} className="btn-primary">
           + Add Recurring
@@ -131,20 +131,20 @@ export default function Recurring() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="card p-4">
-          <p className="text-sm text-gray-500">Monthly Recurring Expenses</p>
-          <p className="text-2xl font-bold text-red-600">
+          <p className="text-sm text-gray-500 dark:text-gray-400">Monthly Recurring Expenses</p>
+          <p className="text-2xl font-bold text-red-600 dark:text-red-400">
             {formatCurrency(monthlyExpenses, currency)}
           </p>
         </div>
         <div className="card p-4">
-          <p className="text-sm text-gray-500">Monthly Recurring Income</p>
-          <p className="text-2xl font-bold text-green-600">
+          <p className="text-sm text-gray-500 dark:text-gray-400">Monthly Recurring Income</p>
+          <p className="text-2xl font-bold text-green-600 dark:text-green-400">
             {formatCurrency(monthlyIncome, currency)}
           </p>
         </div>
         <div className="card p-4">
-          <p className="text-sm text-gray-500">Net Monthly</p>
-          <p className={`text-2xl font-bold ${monthlyIncome - monthlyExpenses >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Net Monthly</p>
+          <p className={`text-2xl font-bold ${monthlyIncome - monthlyExpenses >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
             {formatCurrency(monthlyIncome - monthlyExpenses, currency)}
           </p>
         </div>
@@ -153,12 +153,12 @@ export default function Recurring() {
       {/* Upcoming Transactions */}
       {upcoming && upcoming.length > 0 && (
         <div className="card mb-6 p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">Upcoming (Next 7 Days)</h2>
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Upcoming (Next 7 Days)</h2>
           <div className="space-y-2">
             {upcoming.slice(0, 5).map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
+                className="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-700 last:border-0"
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -168,13 +168,13 @@ export default function Recurring() {
                     {item.categoryIcon || (item.type === 'expense' ? '-' : '+')}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">{item.categoryName}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="font-medium text-gray-900 dark:text-white">{item.categoryName}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                       {item.daysUntil === 0 ? 'Today' : item.daysUntil === 1 ? 'Tomorrow' : `In ${item.daysUntil} days`}
                     </p>
                   </div>
                 </div>
-                <span className={`font-medium ${item.type === 'expense' ? 'text-red-600' : 'text-green-600'}`}>
+                <span className={`font-medium ${item.type === 'expense' ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'}`}>
                   {item.type === 'expense' ? '-' : '+'}{formatCurrency(item.amount, currency)}
                 </span>
               </div>

@@ -112,8 +112,8 @@ export default function Income() {
     <div>
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Income</h1>
-          <p className="text-gray-500 mt-1">Track your earnings and income sources</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Income</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Track your earnings and income sources</p>
         </div>
         <button onClick={() => setShowForm(true)} className="btn-primary">
           + Add Income
@@ -123,20 +123,20 @@ export default function Income() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="card p-4">
-          <p className="text-sm text-gray-500">This Month</p>
-          <p className="text-2xl font-bold text-green-600">
+          <p className="text-sm text-gray-500 dark:text-gray-400">This Month</p>
+          <p className="text-2xl font-bold text-green-600 dark:text-green-400">
             {formatCurrency(stats?.monthlyTotal || 0, currency)}
           </p>
         </div>
         <div className="card p-4">
-          <p className="text-sm text-gray-500">This Year</p>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-sm text-gray-500 dark:text-gray-400">This Year</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">
             {formatCurrency(stats?.yearlyTotal || 0, currency)}
           </p>
         </div>
         <div className="card p-4">
-          <p className="text-sm text-gray-500">Top Source</p>
-          <p className="text-xl font-bold text-gray-900">
+          <p className="text-sm text-gray-500 dark:text-gray-400">Top Source</p>
+          <p className="text-xl font-bold text-gray-900 dark:text-white">
             {stats?.categoryBreakdown?.[0]?.categoryName || 'N/A'}
           </p>
         </div>
@@ -207,7 +207,7 @@ export default function Income() {
 
         {hasFilters && (
           <div className="mt-4">
-            <button onClick={clearFilters} className="text-sm text-primary-600 hover:underline">
+            <button onClick={clearFilters} className="text-sm text-primary-600 dark:text-primary-400 hover:underline">
               Clear all filters
             </button>
           </div>
@@ -220,7 +220,7 @@ export default function Income() {
           <LoadingSection />
         ) : incomes.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 mb-4">No income records found</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">No income records found</p>
             <button onClick={() => setShowForm(true)} className="btn-primary">
               Add your first income
             </button>
@@ -235,8 +235,8 @@ export default function Income() {
 
             {/* Pagination */}
             {pagination && pagination.totalPages > 1 && (
-              <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-                <p className="text-sm text-gray-600">
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   Showing {(pagination.page - 1) * pagination.limit + 1} to{' '}
                   {Math.min(pagination.page * pagination.limit, pagination.total)} of{' '}
                   {pagination.total} records
@@ -245,17 +245,17 @@ export default function Income() {
                   <button
                     onClick={() => setFilters((f) => ({ ...f, page: (f.page || 1) - 1 }))}
                     disabled={pagination.page === 1}
-                    className="px-3 py-1 text-sm border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                    className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"
                   >
                     Previous
                   </button>
-                  <span className="px-3 py-1 text-sm">
+                  <span className="px-3 py-1 text-sm dark:text-gray-300">
                     Page {pagination.page} of {pagination.totalPages}
                   </span>
                   <button
                     onClick={() => setFilters((f) => ({ ...f, page: (f.page || 1) + 1 }))}
                     disabled={pagination.page === pagination.totalPages}
-                    className="px-3 py-1 text-sm border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                    className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"
                   >
                     Next
                   </button>

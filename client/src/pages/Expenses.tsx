@@ -124,7 +124,7 @@ export default function Expenses() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Expenses</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Expenses</h1>
         <div className="flex gap-2">
           <button
             onClick={handleExportCSV}
@@ -211,7 +211,7 @@ export default function Expenses() {
 
         {hasFilters && (
           <div className="mt-4">
-            <button onClick={clearFilters} className="text-sm text-primary-600 hover:underline">
+            <button onClick={clearFilters} className="text-sm text-primary-600 dark:text-primary-400 hover:underline">
               Clear all filters
             </button>
           </div>
@@ -224,7 +224,7 @@ export default function Expenses() {
           <LoadingSection />
         ) : expenses.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 mb-4">No expenses found</p>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">No expenses found</p>
             <button onClick={() => setShowForm(true)} className="btn-primary">
               Add your first expense
             </button>
@@ -234,18 +234,18 @@ export default function Expenses() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 font-medium text-gray-600">Date</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-600">Category</th>
-                    <th className="text-left py-3 px-4 font-medium text-gray-600">Description</th>
-                    <th className="text-right py-3 px-4 font-medium text-gray-600">Amount</th>
-                    <th className="text-right py-3 px-4 font-medium text-gray-600">Actions</th>
+                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                    <th className="text-left py-3 px-4 font-medium text-gray-600 dark:text-gray-300">Date</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-600 dark:text-gray-300">Category</th>
+                    <th className="text-left py-3 px-4 font-medium text-gray-600 dark:text-gray-300">Description</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600 dark:text-gray-300">Amount</th>
+                    <th className="text-right py-3 px-4 font-medium text-gray-600 dark:text-gray-300">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {expenses.map((expense) => (
-                    <tr key={expense.id} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="py-3 px-4 text-gray-900">
+                    <tr key={expense.id} className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                      <td className="py-3 px-4 text-gray-900 dark:text-gray-100">
                         {formatDate(expense.expenseDate)}
                       </td>
                       <td className="py-3 px-4">
@@ -256,25 +256,25 @@ export default function Expenses() {
                           >
                             {expense.categoryIcon?.charAt(0).toUpperCase() || '?'}
                           </div>
-                          <span className="text-gray-700">{expense.categoryName}</span>
+                          <span className="text-gray-700 dark:text-gray-300">{expense.categoryName}</span>
                         </div>
                       </td>
-                      <td className="py-3 px-4 text-gray-600">
+                      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">
                         {expense.description || '-'}
                       </td>
-                      <td className="py-3 px-4 text-right font-medium text-gray-900">
+                      <td className="py-3 px-4 text-right font-medium text-gray-900 dark:text-gray-100">
                         {formatCurrency(expense.amount, currency)}
                       </td>
                       <td className="py-3 px-4 text-right">
                         <button
                           onClick={() => setEditingExpense(expense)}
-                          className="text-primary-600 hover:text-primary-700 mr-3"
+                          className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mr-3"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(expense.id)}
-                          className="text-red-600 hover:text-red-700"
+                          className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
                           disabled={deleteMutation.isPending}
                         >
                           Delete
@@ -288,8 +288,8 @@ export default function Expenses() {
 
             {/* Pagination */}
             {pagination && pagination.totalPages > 1 && (
-              <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-                <p className="text-sm text-gray-600">
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   Showing {(pagination.page - 1) * pagination.limit + 1} to{' '}
                   {Math.min(pagination.page * pagination.limit, pagination.total)} of{' '}
                   {pagination.total} expenses
@@ -298,17 +298,17 @@ export default function Expenses() {
                   <button
                     onClick={() => setFilters((f) => ({ ...f, page: (f.page || 1) - 1 }))}
                     disabled={pagination.page === 1}
-                    className="px-3 py-1 text-sm border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                    className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"
                   >
                     Previous
                   </button>
-                  <span className="px-3 py-1 text-sm">
+                  <span className="px-3 py-1 text-sm dark:text-gray-300">
                     Page {pagination.page} of {pagination.totalPages}
                   </span>
                   <button
                     onClick={() => setFilters((f) => ({ ...f, page: (f.page || 1) + 1 }))}
                     disabled={pagination.page === pagination.totalPages}
-                    className="px-3 py-1 text-sm border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                    className="px-3 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"
                   >
                     Next
                   </button>

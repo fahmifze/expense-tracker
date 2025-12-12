@@ -109,11 +109,11 @@ export default function Profile() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Profile Settings</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Profile Settings</h1>
 
       {/* Profile Information */}
       <div className="card mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Profile Information</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Profile Information</h2>
 
         <form onSubmit={handleProfileUpdate} className="space-y-4">
           <div>
@@ -121,10 +121,10 @@ export default function Profile() {
             <input
               type="email"
               value={user?.email || ''}
-              className="input bg-gray-50"
+              className="input bg-gray-50 dark:bg-gray-700"
               disabled
             />
-            <p className="text-xs text-gray-500 mt-1">Email cannot be changed</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Email cannot be changed</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -177,7 +177,7 @@ export default function Profile() {
 
       {/* Change Password */}
       <div className="card mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Change Password</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Change Password</h2>
 
         <form onSubmit={handlePasswordChange} className="space-y-4">
           <div>
@@ -226,11 +226,11 @@ export default function Profile() {
 
       {/* Account Info */}
       <div className="card mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Account Information</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Account Information</h2>
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <span className="text-gray-600">Member since</span>
-            <span className="text-gray-900">
+            <span className="text-gray-600 dark:text-gray-400">Member since</span>
+            <span className="text-gray-900 dark:text-gray-100">
               {user?.createdAt
                 ? formatDate(user.createdAt, { year: 'numeric', month: 'long', day: 'numeric' })
                 : '-'}
@@ -240,9 +240,9 @@ export default function Profile() {
       </div>
 
       {/* Danger Zone */}
-      <div className="card border-red-200">
-        <h2 className="text-lg font-semibold text-red-600 mb-4">Danger Zone</h2>
-        <p className="text-sm text-gray-600 mb-4">
+      <div className="card border-red-200 dark:border-red-800">
+        <h2 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-4">Danger Zone</h2>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
           Once you delete your account, there is no going back. All your data including expenses,
           categories, and profile information will be permanently deleted.
         </p>
@@ -261,7 +261,7 @@ export default function Profile() {
         title="Delete Account"
         size="sm"
       >
-        <p className="text-gray-600 mb-4">
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
           This action cannot be undone. Please enter your password to confirm.
         </p>
 

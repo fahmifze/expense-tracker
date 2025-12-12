@@ -1,74 +1,84 @@
 # Expense Tracker
 
-A modern full-stack expense management application built with React, TypeScript, Express, and MySQL. Track your daily expenses, visualize spending patterns, and manage your finances with ease.
+A full-stack expense management application built with React, TypeScript, Express, and MySQL.
+
+---
 
 ## Features
 
-- **User Authentication** - Secure registration, login, and logout with JWT tokens
-- **Dashboard** - Overview with spending statistics, charts, and recent expenses
-- **Expense Management** - Add, edit, and delete expenses with category assignment
-- **Category Management** - Default categories + create custom categories with colors and icons
-- **Multi-Currency Support** - 10 currencies with automatic conversion (USD, EUR, GBP, MYR, SGD, etc.)
-- **Data Visualization** - Monthly trends, category breakdown pie chart, and daily spending bar chart
-- **Search & Filter** - Filter expenses by date range, category, and search by description
-- **Export** - Download expenses as CSV or PDF reports
-- **Profile Management** - Update profile info, change password, delete account
-- **Responsive Design** - Mobile-friendly web interface that adapts to all screen sizes
+**Core**
+- User authentication with JWT tokens
+- Expense tracking with category assignment
+- Income tracking with source categories
+- Budget planning with spending alerts
+
+**Financial Tools**
+- Recurring transactions (expenses and income)
+- Smart insights and spending analysis
+- Net savings calculation
+- Multi-currency support (10 currencies)
+
+**Visualization**
+- Monthly spending trends
+- Category breakdown charts
+- Daily spending patterns
+- Budget progress tracking
+
+**Data Management**
+- Search and filter by date, category, amount
+- Export to CSV and PDF
+- Paginated lists with sorting
+
+---
 
 ## Tech Stack
 
-**Frontend:**
-- React 18 with TypeScript
-- Vite for fast development and building
-- Tailwind CSS for styling
-- React Query (TanStack Query) for server state management
-- React Router v6 for navigation
-- Recharts for data visualization
-- Axios for HTTP requests
+| Layer | Technologies |
+|-------|--------------|
+| Frontend | React 18, TypeScript, Vite, Tailwind CSS, React Query, Recharts |
+| Backend | Node.js, Express, TypeScript, MySQL, JWT, Zod |
+| Database | MySQL 8+ with raw SQL |
 
-**Backend:**
-- Node.js with Express
-- TypeScript
-- MySQL with raw SQL queries (mysql2)
-- JWT authentication with access + refresh tokens
-- Zod for request validation
-- bcrypt for password hashing
-- PDFKit for PDF generation
+---
 
 ## Project Structure
 
 ```
 expense-tracker/
-├── client/                 # React frontend
-│   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   │   ├── charts/     # Chart components (Pie, Bar, Area)
-│   │   │   ├── expenses/   # Expense-related components
-│   │   │   ├── layout/     # Layout components (Navbar, Sidebar)
-│   │   │   └── ui/         # Generic UI components (Modal, Toast)
-│   │   ├── context/        # React context (AuthContext)
-│   │   ├── hooks/          # Custom hooks (useExpenses, useCategories)
-│   │   ├── pages/          # Page components
-│   │   ├── services/       # API service functions
-│   │   ├── types/          # TypeScript type definitions
-│   │   └── utils/          # Utility functions (formatters)
-│   └── public/             # Static assets
-├── server/                 # Express backend
+├── client/
 │   └── src/
-│       ├── config/         # Configuration (env variables)
-│       ├── controllers/    # Route controllers
-│       ├── middleware/     # Express middleware (auth, error, validation)
-│       ├── models/         # Database connection
-│       ├── routes/         # API route definitions
-│       ├── scripts/        # Utility scripts (seed)
-│       ├── services/       # Business logic
-│       ├── utils/          # Utility functions (password, jwt)
-│       └── validators/     # Zod validation schemas
-├── database/               # SQL schema and seed files
-│   ├── schema.sql          # Database schema
-│   └── seed.sql            # Sample data
-└── package.json            # Root package.json (npm workspaces)
+│       ├── components/
+│       │   ├── budget/
+│       │   ├── charts/
+│       │   ├── expenses/
+│       │   ├── income/
+│       │   ├── insights/
+│       │   ├── layout/
+│       │   ├── recurring/
+│       │   └── ui/
+│       ├── context/
+│       ├── hooks/
+│       ├── pages/
+│       ├── services/
+│       ├── types/
+│       └── utils/
+├── server/
+│   └── src/
+│       ├── config/
+│       ├── controllers/
+│       ├── middleware/
+│       ├── models/
+│       ├── routes/
+│       ├── services/
+│       ├── validators/
+│       └── utils/
+└── database/
+    ├── schema.sql
+    ├── migrations/
+    └── seed.sql
 ```
+
+---
 
 ## Getting Started
 
@@ -76,24 +86,20 @@ expense-tracker/
 
 - Node.js 18+
 - MySQL 8+
-- npm or yarn
 
 ### Installation
 
-1. **Clone the repository:**
 ```bash
+# Clone and install
 git clone https://github.com/fahmifze/expense-tracker.git
 cd expense-tracker
-```
-
-2. **Install dependencies:**
-```bash
 npm install
 ```
 
-3. **Set up environment variables:**
+### Environment Setup
 
-Create a `.env` file in the `server` directory:
+Create `server/.env`:
+
 ```env
 DB_HOST=localhost
 DB_PORT=3306
@@ -101,167 +107,129 @@ DB_USER=root
 DB_PASSWORD=your_password
 DB_NAME=expense_tracker
 
-JWT_SECRET=your-super-secret-jwt-key-change-this
-JWT_REFRESH_SECRET=your-super-secret-refresh-key-change-this
+JWT_SECRET=your-jwt-secret
+JWT_REFRESH_SECRET=your-refresh-secret
 
 NODE_ENV=development
 PORT=3001
 CLIENT_URL=http://localhost:5174
 ```
 
-4. **Create the database:**
+### Database Setup
+
 ```bash
-# Login to MySQL
-mysql -u root -p
-
-# Create database
-CREATE DATABASE expense_tracker;
-exit;
-
-# Run schema
+mysql -u root -p -e "CREATE DATABASE expense_tracker"
 mysql -u root -p expense_tracker < database/schema.sql
+mysql -u root -p expense_tracker < database/migrations/001_add_new_features.sql
 ```
 
-5. **Seed demo data (optional):**
+### Seed Demo Data (Optional)
+
 ```bash
 npm run seed
 ```
 
-This creates a demo user:
+Demo credentials:
 - Email: `demo@example.com`
 - Password: `password123`
 
-### Running the Application
+### Run
 
-**Start both frontend and backend:**
 ```bash
+# Both frontend and backend
 npm run dev
+
+# Separately
+npm run dev:server    # localhost:3001
+npm run dev:client    # localhost:5174
 ```
 
-**Or start them separately:**
-```bash
-# Backend only (port 3001)
-npm run dev:server
-
-# Frontend only (port 5174)
-npm run dev:client
-```
-
-**Access the application:**
-- Frontend: http://localhost:5174
-- Backend API: http://localhost:3001
+---
 
 ## API Endpoints
 
-### Authentication
+### Auth
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/auth/register` | Register a new user |
-| POST | `/api/auth/login` | Login and get tokens |
-| POST | `/api/auth/refresh` | Refresh access token |
-| POST | `/api/auth/logout` | Logout and invalidate refresh token |
-
-### Users
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/users/profile` | Get current user profile |
-| PATCH | `/api/users/profile` | Update profile (name, currency) |
-| POST | `/api/users/change-password` | Change password |
-| DELETE | `/api/users/account` | Delete account |
-
-### Categories
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/categories` | Get all categories |
-| GET | `/api/categories/:id` | Get single category |
-| POST | `/api/categories` | Create custom category |
-| PUT | `/api/categories/:id` | Update category |
-| DELETE | `/api/categories/:id` | Delete custom category |
+| POST | /api/auth/register | Register user |
+| POST | /api/auth/login | Login |
+| POST | /api/auth/refresh | Refresh token |
+| POST | /api/auth/logout | Logout |
 
 ### Expenses
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/expenses` | Get expenses (paginated, filterable) |
-| GET | `/api/expenses/stats` | Get expense statistics |
-| GET | `/api/expenses/:id` | Get single expense |
-| POST | `/api/expenses` | Create expense |
-| PUT | `/api/expenses/:id` | Update expense |
-| DELETE | `/api/expenses/:id` | Delete expense |
+| GET | /api/expenses | List expenses |
+| GET | /api/expenses/stats | Statistics |
+| POST | /api/expenses | Create |
+| PATCH | /api/expenses/:id | Update |
+| DELETE | /api/expenses/:id | Delete |
 
-### Export
+### Income
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/export/csv` | Export expenses as CSV |
-| GET | `/api/export/pdf` | Export expenses as PDF |
+| GET | /api/incomes | List income |
+| GET | /api/incomes/stats | Statistics |
+| GET | /api/incomes/categories | Income categories |
+| POST | /api/incomes | Create |
+| PATCH | /api/incomes/:id | Update |
+| DELETE | /api/incomes/:id | Delete |
 
-### Health Check
+### Budget
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/health` | API health check |
+| GET | /api/budgets | List budgets |
+| GET | /api/budgets/status | Budgets with spending |
+| GET | /api/budgets/alerts | Budget alerts |
+| POST | /api/budgets | Create |
+| PATCH | /api/budgets/:id | Update |
+| DELETE | /api/budgets/:id | Delete |
+
+### Recurring
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/recurring | List rules |
+| GET | /api/recurring/upcoming | Upcoming transactions |
+| POST | /api/recurring | Create |
+| PATCH | /api/recurring/:id | Update |
+| PATCH | /api/recurring/:id/toggle | Toggle active |
+| DELETE | /api/recurring/:id | Delete |
+
+### Insights
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/insights | Get insights |
+| GET | /api/insights/summary | Financial summary |
+
+### Other
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/categories | Expense categories |
+| GET | /api/users/profile | User profile |
+| GET | /api/export/csv | Export CSV |
+| GET | /api/export/pdf | Export PDF |
+| GET | /api/health | Health check |
+
+---
 
 ## Currency Support
 
-The application supports 10 currencies with automatic conversion:
+USD, EUR, GBP, JPY, MYR, SGD, AUD, CAD, INR, CNY
 
-| Currency | Code | Symbol | Exchange Rate (to USD) |
-|----------|------|--------|------------------------|
-| US Dollar | USD | $ | 1.00 |
-| Euro | EUR | € | 0.92 |
-| British Pound | GBP | £ | 0.79 |
-| Japanese Yen | JPY | ¥ | 149.50 |
-| Malaysian Ringgit | MYR | RM | 4.47 |
-| Singapore Dollar | SGD | S$ | 1.34 |
-| Australian Dollar | AUD | A$ | 1.53 |
-| Canadian Dollar | CAD | C$ | 1.36 |
-| Indian Rupee | INR | ₹ | 83.12 |
-| Chinese Yuan | CNY | ¥ | 7.24 |
-
-*Note: Exchange rates are approximate and hardcoded. For production use, integrate a real-time exchange rate API.*
+---
 
 ## Scripts
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start both client and server in development mode |
-| `npm run dev:client` | Start frontend only |
-| `npm run dev:server` | Start backend only |
-| `npm run build` | Build both client and server |
-| `npm run seed` | Seed database with demo user and sample expenses |
+| npm run dev | Start development |
+| npm run dev:client | Frontend only |
+| npm run dev:server | Backend only |
+| npm run build | Production build |
+| npm run seed | Seed demo data |
 
-## Screenshots
-
-### Dashboard
-- Monthly spending overview with trend chart
-- Category breakdown pie chart
-- Daily spending bar chart
-- Recent expenses list
-
-### Expenses Page
-- Full expense list with pagination
-- Filter by category, date range, and search
-- Add/edit expense modal
-- Export to CSV/PDF
-
-### Profile Page
-- Update personal information
-- Change display currency
-- Change password
-- Delete account option
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+---
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Built with modern React and TypeScript best practices
-- UI inspired by modern dashboard designs
-- Charts powered by Recharts library
+MIT
