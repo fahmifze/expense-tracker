@@ -14,6 +14,9 @@ import Budget from './pages/Budget';
 import Income from './pages/Income';
 import Recurring from './pages/Recurring';
 import News from './pages/News';
+import Stocks from './pages/Stocks';
+import StockDetail from './pages/StockDetail';
+import Portfolio from './pages/Portfolio';
 
 // Redirect authenticated users away from login/register
 function PublicRoute({ children }: { children: React.ReactNode }) {
@@ -122,6 +125,30 @@ function AppRoutes() {
         element={
           <ProtectedWithLayout>
             <News />
+          </ProtectedWithLayout>
+        }
+      />
+      <Route
+        path="/stocks"
+        element={
+          <ProtectedWithLayout>
+            <Stocks />
+          </ProtectedWithLayout>
+        }
+      />
+      <Route
+        path="/stocks/:symbol"
+        element={
+          <ProtectedWithLayout>
+            <StockDetail />
+          </ProtectedWithLayout>
+        }
+      />
+      <Route
+        path="/portfolio"
+        element={
+          <ProtectedWithLayout>
+            <Portfolio />
           </ProtectedWithLayout>
         }
       />

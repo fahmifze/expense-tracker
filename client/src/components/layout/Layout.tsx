@@ -11,8 +11,10 @@ const navItems = [
   { path: '/expenses', label: 'Expenses', icon: 'E' },
   { path: '/income', label: 'Income', icon: 'I' },
   { path: '/budget', label: 'Budget', icon: 'B' },
-  { path: '/recurring', label: 'Recurring', icon: 'R' },
+  { path: '/stocks', label: 'Stocks', icon: 'S' },
+  { path: '/portfolio', label: 'Portfolio', icon: '$' },
   { path: '/news', label: 'News', icon: 'N' },
+  { path: '/recurring', label: 'Recurring', icon: 'R' },
   { path: '/categories', label: 'Categories', icon: 'C' },
   { path: '/profile', label: 'Profile', icon: 'P' },
 ];

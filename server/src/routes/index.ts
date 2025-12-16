@@ -10,6 +10,7 @@ import recurringRoutes from './recurring.routes';
 import insightsRoutes from './insights.routes';
 import exchangeRateRoutes from './exchangeRate.routes';
 import newsRoutes from './news.routes';
+import stockRoutes from './stock.routes';
 
 const router = Router();
 
@@ -34,5 +35,6 @@ router.use('/recurring', recurringRoutes);
 router.use('/insights', insightsRoutes);
 router.use('/exchange-rates', exchangeRateRoutes);
 router.use('/news', newsRoutes);
+router.use('/stocks', stockRoutes);
 
 export default router;

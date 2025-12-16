@@ -12,6 +12,7 @@ import { LoadingSection } from '../components/ui';
 import { formatCurrency, formatDateShort } from '../utils/formatters';
 import InsightsList from '../components/insights/InsightsList';
 import BudgetProgressBar from '../components/budget/BudgetProgressBar';
+import StockWidget from '../components/stocks/StockWidget';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -130,8 +131,8 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Budget Alerts & Insights Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      {/* Budget Alerts, Insights & Market Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <div className="card">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Budget Status</h3>
@@ -188,6 +189,9 @@ export default function Dashboard() {
             maxItems={3}
           />
         </div>
+
+        {/* Stock Market Widget */}
+        <StockWidget />
       </div>
 
       {/* Upcoming Recurring */}
