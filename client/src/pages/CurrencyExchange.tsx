@@ -114,11 +114,13 @@ function QuickRateCard({ from, to, isDark }: QuickRateCardProps) {
       </p>
       {isLoading ? (
         <div className={`h-4 w-16 mx-auto mt-2 rounded animate-pulse ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`} />
-      ) : rate !== null ? (
+      ) : rate !== null && !isNaN(rate) ? (
         <p className={`text-center text-lg font-bold mt-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
           {rate >= 100 ? rate.toFixed(2) : rate.toFixed(4)}
         </p>
-      ) : null}
+      ) : (
+        <p className={`text-center text-sm mt-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>--</p>
+      )}
     </div>
   );
 }
