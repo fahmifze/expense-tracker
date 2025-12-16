@@ -17,7 +17,8 @@
       "Bash(npx tsc:*)",
       "Bash(mysql:*)",
       "Bash(npm run migrate:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(git fetch:*)"
     ],
     "deny": [],
     "ask": []
