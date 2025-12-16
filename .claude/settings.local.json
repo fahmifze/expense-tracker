@@ -18,7 +18,10 @@
       "Bash(mysql:*)",
       "Bash(npm run migrate:*)",
       "Bash(node -e:*)",
-      "Bash(git fetch:*)"
+      "Bash(git fetch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
