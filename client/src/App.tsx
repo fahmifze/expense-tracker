@@ -17,6 +17,7 @@ import News from './pages/News';
 import Stocks from './pages/Stocks';
 import StockDetail from './pages/StockDetail';
 import Portfolio from './pages/Portfolio';
+import CurrencyExchange from './pages/CurrencyExchange';
 
 // Redirect authenticated users away from login/register
 function PublicRoute({ children }: { children: React.ReactNode }) {
@@ -149,6 +150,14 @@ function AppRoutes() {
         element={
           <ProtectedWithLayout>
             <Portfolio />
+          </ProtectedWithLayout>
+        }
+      />
+      <Route
+        path="/currency"
+        element={
+          <ProtectedWithLayout>
+            <CurrencyExchange />
           </ProtectedWithLayout>
         }
       />

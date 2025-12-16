@@ -13,6 +13,7 @@ const navItems = [
   { path: '/budget', label: 'Budget', icon: 'B' },
   { path: '/stocks', label: 'Stocks', icon: 'S' },
   { path: '/portfolio', label: 'Portfolio', icon: '$' },
+  { path: '/currency', label: 'Currency', icon: '¤' },
   { path: '/news', label: 'News', icon: 'N' },
   { path: '/recurring', label: 'Recurring', icon: 'R' },
   { path: '/categories', label: 'Categories', icon: 'C' },
@@ -104,7 +105,7 @@ export default function Layout({ children }: LayoutProps) {
           {/* Mobile Navigation */}
           <div className={`md:hidden fixed bottom-0 left-0 right-0 border-t px-4 py-2 z-40 transition-colors ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
             <div className="flex justify-around">
-              {navItems.slice(0, 6).map((item) => (
+              {navItems.slice(0, 7).map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}

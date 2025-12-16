@@ -16,7 +16,8 @@
       "Bash(dir \"c:\\laragon\\www\\Daily-Expense-Management-System-master\\database\")",
       "Bash(npx tsc:*)",
       "Bash(mysql:*)",
-      "Bash(npm run migrate:*)"
+      "Bash(npm run migrate:*)",
+      "Bash(node -e:*)"
     ],
     "deny": [],
     "ask": []
