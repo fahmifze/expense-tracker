@@ -1,4 +1,4 @@
-# Expense Tracker
+# Finance Hub
 
 A full-stack expense management application built with React, TypeScript, Express, and MySQL.
 
