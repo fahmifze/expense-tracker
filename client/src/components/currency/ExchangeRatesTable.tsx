@@ -169,7 +169,7 @@ export default function ExchangeRatesTable({ baseCurrency: initialBase = 'USD' }
       {/* Footer with timestamp */}
       <div className={`p-4 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
         <p className={`text-xs text-center ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-          Data provided by Open Exchange Rates • Last updated: {new Date(data.lastUpdated).toLocaleString()}
+          Data provided by Open Exchange Rates • Last updated: {new Date(data.lastUpdated || Date.now()).toLocaleString()}
         </p>
       </div>
     </div>

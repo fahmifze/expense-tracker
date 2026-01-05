@@ -1,5 +1,6 @@
 import { BudgetWithStatus } from '../../types/budget.types';
 import BudgetProgressBar from './BudgetProgressBar';
+import DynamicIcon from '../ui/DynamicIcon';
 
 interface BudgetCardProps {
   budget: BudgetWithStatus;
@@ -23,14 +24,14 @@ export default function BudgetCard({ budget, onEdit, onDelete }: BudgetCardProps
         <div className="flex items-center gap-3">
           {budget.categoryColor ? (
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center text-white text-lg"
+              className="w-10 h-10 rounded-lg flex items-center justify-center text-white"
               style={{ backgroundColor: budget.categoryColor }}
             >
-              {budget.categoryIcon || '$'}
+              <DynamicIcon name={budget.categoryIcon || 'dollar'} size={20} />
             </div>
           ) : (
-            <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600 text-lg">
-              $
+            <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600">
+              <DynamicIcon name="dollar" size={20} />
             </div>
           )}
           <div>

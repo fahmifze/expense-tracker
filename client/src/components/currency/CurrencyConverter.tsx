@@ -197,7 +197,7 @@ export default function CurrencyConverter() {
         {/* Last Updated */}
         {ratesData && (
           <p className={`text-xs text-center ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-            Rates updated: {new Date(ratesData.lastUpdated).toLocaleString()}
+            Rates updated: {new Date(ratesData.lastUpdated || Date.now()).toLocaleString()}
           </p>
         )}
       </div>

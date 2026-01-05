@@ -21,7 +21,7 @@ export default function StockCard({
 }: StockCardProps) {
   const { isDark } = useTheme();
   const navigate = useNavigate();
-  const isPositive = quote.change >= 0;
+  const isPositive = (quote.change ?? 0) >= 0;
 
   const handleClick = () => {
     if (onClick) {
@@ -47,7 +47,7 @@ export default function StockCard({
               {quote.symbol}
             </span>
             <span className={`ml-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              ${quote.price.toFixed(2)}
+              ${(quote.price ?? 0).toFixed(2)}
             </span>
           </div>
           <span
@@ -57,7 +57,7 @@ export default function StockCard({
                 : 'bg-red-500/10 text-red-500'
             }`}
           >
-            {isPositive ? '+' : ''}{quote.changePercent.toFixed(2)}%
+            {isPositive ? '+' : ''}{(quote.changePercent ?? 0).toFixed(2)}%
           </span>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function StockCard({
       {/* Price */}
       <div className="mb-3">
         <p className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          ${quote.price.toFixed(2)}
+          ${(quote.price ?? 0).toFixed(2)}
         </p>
       </div>
 
@@ -142,7 +142,7 @@ export default function StockCard({
             isPositive ? 'text-green-500' : 'text-red-500'
           }`}
         >
-          {isPositive ? '+' : ''}${quote.change.toFixed(2)}
+          {isPositive ? '+' : ''}${(quote.change ?? 0).toFixed(2)}
         </span>
         <span
           className={`text-sm font-semibold px-2 py-1 rounded-md ${
@@ -151,7 +151,7 @@ export default function StockCard({
               : 'bg-red-500/10 text-red-500'
           }`}
         >
-          {isPositive ? '↑' : '↓'} {Math.abs(quote.changePercent).toFixed(2)}%
+          {isPositive ? '↑' : '↓'} {Math.abs(quote.changePercent ?? 0).toFixed(2)}%
         </span>
       </div>
 
@@ -161,13 +161,13 @@ export default function StockCard({
           <div>
             <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>High </span>
             <span className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              ${quote.high.toFixed(2)}
+              ${(quote.high ?? 0).toFixed(2)}
             </span>
           </div>
           <div>
             <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>Low </span>
             <span className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              ${quote.low.toFixed(2)}
+              ${(quote.low ?? 0).toFixed(2)}
             </span>
           </div>
         </div>
